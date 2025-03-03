@@ -23,10 +23,16 @@ dist-ssr
 *.sln
 *.sw?
 
-project created 
-tailwind css is integrated
 
-1] create a home page 
-2] work on 
-   Sustainability Tips: 
-   Practical advice on reducing waste, saving energy, and eco-friendly
+yet not implimented
+5. Community Features: Allow users to share their experiences and ideas through forums 
+and posts.
+6. Admin Dashboard: Manage content, tools, and community features.
+
+how many work i done previus
+1]home page completed
+2]learn more is completed
+
+on which part i am working
+1]login with auth0
+2]signup with auth0
