@@ -1,5 +1,6 @@
- import  { Link } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import LogIn from '../LogIn/LogIn';
+import LogOut from '../LogOut/LogOut';
 const Home = () => {
     return (
         <div className="bg-green-50 min-h-screen flex flex-col items-center justify-center text-center px-6">
@@ -13,11 +14,21 @@ const Home = () => {
             </p>
 
             {/* more things */}
-            <Link to ='/LearnMore'>
-            <button className="px-6 py-3 mt-10 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
-                Learn More
-            </button>
+            <Link to='https://www.stthomas.edu/_media-library/_documents/residence-life/guide-to-sustainable-living.pdf' target='_blank' rel='noreferrer'>
+                <button className="px-6 py-3 mt-10 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300">
+                    Guide
+                </button>
             </Link>
+
+            
+                {/* LogIn */}
+                <LogIn />
+
+                {/* LogOut */}
+                <LogOut />
+
+
+
         </div>
     );
 }
