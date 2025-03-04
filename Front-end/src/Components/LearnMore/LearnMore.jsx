@@ -80,6 +80,22 @@ const LearnMore = () => {
                         <li>🌍 Join a community of like-minded individuals and share your journey.</li>
                     </ul>
                 </div>
+
+                {/* create post card */}
+                <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-lg text-center">
+                    <h4 className="text-2xl font-semibold text-green-600">Share Your Thoughts</h4>
+                    <p className="text-lg text-gray-600 mt-2">
+                        Express yourself and engage with the community.
+                    </p>
+                    <div className="mt-6">
+                        <Link
+                            to="/createpost"
+                            className="bg-green-500 text-white text-lg font-medium py-2 px-6 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
+                        >
+                            📊 Create Post
+                        </Link>
+                    </div>
+                </div>
             </div>
 
 
