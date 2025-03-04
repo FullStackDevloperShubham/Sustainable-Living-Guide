@@ -13,26 +13,22 @@ import mongodb_connection from './mongoDb/connection.mongoDb.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
+// import routes using router
+import router from './routes/post.route.js';
+
 // Middleware
 app.use(express.json()); // Parse JSON requests
-app.use(cors({
-    //  allow all origins
-    origin: "*",
-})); // Enable CORS
+app.use(cors()); // Enable CORS
 
-
-// all ROUTES
-app.get('/',(req, res)=>{
-    res.send('hello server')
-})
-
+// use router
+app.use('/',router);
 
 // connecting to the database
 const connectWhenMongoDbIsReady = async()=>{
     try {
         await mongodb_connection();
         app.listen(PORT,()=>{
-            console.log(`Server is running on port ${PORT}`);
+            console.log(`http://localhost:${PORT}`);
         });
     } catch (error) {
         console.log('Server failed to start',error.message);
