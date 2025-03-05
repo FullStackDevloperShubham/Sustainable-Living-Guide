@@ -34,7 +34,6 @@ const Post = () => {
     };
 
     return (
-
         <>
             <section className=" bg-green-100 py-20 px-6 md:px-12 lg:px-20 flex items-center justify-center text-center">
                 <div className="max-w-3xl">
@@ -96,6 +95,15 @@ const Post = () => {
             <div className="absolute top-0 right-0 mt-4 mr-6">
                 <Button>
                     <Link to="/all-posts">See All Posts</Link>
+                </Button>
+            </div>
+
+            {/* create a dashboard button */}
+            <div className="absolute top-0 right-30 mt-4 mr-6">
+                <Button>
+                    <Link to="/dashboard">
+                        Dashboard
+                    </Link>
                 </Button>
             </div>
 

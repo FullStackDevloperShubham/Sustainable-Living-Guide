@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import LogIn from '../LogIn/LogIn';
 import LogOut from '../LogOut/LogOut';
+import Dashboard from '../Dashboard/Dashboard';
 const Home = () => {
     return (
         <div className="bg-green-50 min-h-screen flex flex-col items-center justify-center text-center px-6">
@@ -26,7 +27,6 @@ const Home = () => {
 
                 {/* LogOut */}
                 <LogOut />
-
 
 
         </div>
