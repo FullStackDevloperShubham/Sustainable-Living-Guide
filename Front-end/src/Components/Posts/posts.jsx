@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -85,15 +86,22 @@ const Post = () => {
 
             {/* create a previous page button */}
             <div className="flex justify-center mt-6">
-                <Button
-                    onClick={() => {
-                        window.history.back();
-                    }}
-                >
-                    Previous Page
+                <Button >
+                    <Link to='/learnmore' >
+                        Previous Page
+                    </Link>
                 </Button>
             </div>
-            
+             
+             {/* see all posts button */}
+            <div className="flex justify-center mt-6">
+                <Button>
+                <Link to='/all-posts'>
+                    See All Posts
+                </Link>
+                </Button>
+            </div>
+
         </>
     );
 };
