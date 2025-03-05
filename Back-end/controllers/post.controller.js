@@ -54,3 +54,14 @@ export const handlePostData = (req, res) => {
     // store the data in the database
     res.status(200).json({ message: 'Post created successfully' })
 }
+
+// count the total data in mongodb
+export const totalNumberOfDocumentsInDatabase = async(req,res)=>{
+    try {
+        // get the total data 
+        const count = await Post.countDocuments()
+        res.status(200).json(count)
+    } catch (error) {
+         return res.status(404).json({error:"Error while count the data"})
+    }
+}

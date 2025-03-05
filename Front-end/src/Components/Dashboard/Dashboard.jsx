@@ -1,8 +1,21 @@
+import {useState ,  useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { Button } from "@/components/ui/button";
 
 
 const Dashboard = () => {
+
+    // set variable for couting the documents
+    const [postCount , setpostCount] = useState(0)
+
+    // fetch the data for counting the documents
+    useEffect(()=>{
+        fetch('http://localhost:5000/countOfDocuments')
+        .then((res)=>res.json())
+        .then((data)=>setpostCount(data))
+        .catch((error)=>console.log("error fetching the data",error.message))
+    })
+
     return (
         <>
             {/* dashboard using shadcn and tailwind css */}
@@ -25,7 +38,7 @@ const Dashboard = () => {
                                 </Link>
                                 
                                 {/* <Button className="bg-gray-300 text-black hover:text-white hover:cursor-pointer">Settings</Button>  */}
-                                <Button className="bg-gray-300 text-black hover:text-white hover:cursor-pointer">Logout</Button>
+                                {/* <Button className="bg-gray-300 text-black hover:text-white hover:cursor-pointer">Logout</Button> */}
                             </div>
                         </div>
                         {/* create a main content */}
@@ -34,7 +47,7 @@ const Dashboard = () => {
                                 <h1>Home</h1>
                             </div>
                             <div className="flex flex-col items-center justify-center w-full h-5/6 bg-gray-200">
-                                <h1>Content</h1>
+                                <h1>Total Posts:{postCount}</h1>
                             </div>
                         </div>
                     </div>

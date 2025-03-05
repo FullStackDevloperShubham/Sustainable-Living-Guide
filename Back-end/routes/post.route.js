@@ -7,6 +7,7 @@ const router = express.Router();
 import {handleGet} from '../controllers/post.controller.js';
 import {handlePostData} from '../controllers/post.controller.js';
 import { getDataById } from '../controllers/post.controller.js';
+import {totalNumberOfDocumentsInDatabase} from '../controllers/post.controller.js'
 
 // get router
 router.get('/',handleGet)
@@ -16,5 +17,8 @@ router.get('/api/byid/:id',getDataById)
 
 // post router 
 router.post('/post',handlePostData )
+
+// total documents in mongodb 
+router.get('/countOfDocuments',totalNumberOfDocumentsInDatabase)
 
 export default router;
