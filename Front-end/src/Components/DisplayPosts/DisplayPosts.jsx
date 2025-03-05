@@ -25,24 +25,30 @@ const DisplayPosts = () => {
     if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
     return (
-        <div className="container mx-auto p-6">
+        <div className="container max-w-full mx-auto p-6">
             <h1 className="text-3xl font-bold text-center mb-6">Latest Posts</h1>
-            <div className="flex flex-wrap justify-center">
-                { posts ? posts.map((post) => (
-                    <Card key={post._id} className="w-full md:w-1/2 lg:w-1/3 m-4 shadow-lg border border-gray-300">
-                        <CardHeader>
-                            <CardTitle className="text-xl font-semibold">{post.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-gray-600">{post.description}</p>
-                            <p className="text-sm text-gray-400 mt-2">
-                                Posted on: {new Date(post.createdAt).toLocaleDateString()}
-                            </p>
-                        </CardContent>
-                    </Card>
-                )) : <p className="text-center text-gray-500">No posts available</p>}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts && posts.length > 0 ? (
+                    posts.map((post) => (
+                        <Card key={post._id} className="w-full shadow-lg border border-gray-300">
+                            <CardHeader>
+                                <CardTitle className="text-xl font-semibold">{post.title}</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-gray-600">{post.description}</p>
+                                <p className="text-sm text-gray-400 mt-2">
+                                    Posted on: {new Date(post.createdAt).toLocaleDateString()}
+                                </p>
+                            </CardContent>
+                        </Card>
+                    ))
+                ) : (
+                    <p className="text-center text-gray-500 col-span-3">No posts available</p>
+                )}
             </div>
         </div>
+
+
     );
 };
 

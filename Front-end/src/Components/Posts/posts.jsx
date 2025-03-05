@@ -92,13 +92,10 @@ const Post = () => {
                     </Link>
                 </Button>
             </div>
-             
-             {/* see all posts button */}
-            <div className="flex justify-center mt-6">
+
+            <div className="absolute top-0 right-0 mt-4 mr-6">
                 <Button>
-                <Link to='/all-posts'>
-                    See All Posts
-                </Link>
+                    <Link to="/all-posts">See All Posts</Link>
                 </Button>
             </div>
 
