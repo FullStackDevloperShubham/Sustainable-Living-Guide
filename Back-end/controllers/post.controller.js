@@ -65,3 +65,26 @@ export const totalNumberOfDocumentsInDatabase = async(req,res)=>{
          return res.status(404).json({error:"Error while count the data"})
     }
 }
+
+
+// Delete post by id 
+export const deletePostById = async(req,res)=>{
+
+    // take is from front end 
+    // req.params.id
+    const { id } = req.params;
+
+    // check if the id is valid
+    if (!id) {
+        return res.status(400).json({ error: 'Please provide the id' })
+    }
+
+    try {
+        // delete the post by id
+        await Post.findByIdAndDelete(id)
+        res.status(200).json({ message: 'Post deleted successfully' })
+    } catch (error) {
+        return res.status(404).json({ error: "id dosen't exist" })
+    }
+
+}

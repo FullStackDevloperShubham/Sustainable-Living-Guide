@@ -7,12 +7,6 @@ import axios from 'axios';
 
 const Dashboard = () => {
 
-    const handleDelete = (index) => {
-        // Implement your delete logic here (e.g., filter out the post)
-        console.log("Delete post at index:", index);
-      };
-      
-
     const { user, isAuthenticated, isLoading } = useAuth0();
     if (isLoading) return <p>Loading...</p>;
 
@@ -21,15 +15,31 @@ const Dashboard = () => {
     const [postCount, setPostCount] = useState(0)
 
     // useState for display the title of post
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState();
 
     // display components when click on view report
     const [isVisible, setIsVisible] = useState(true)
 
-    // Fetch the document count
+    // delete the post 
+    const handleDelete = async(clickedPostId) => {
+        console.log("Delete post at index:", clickedPostId);
+
+        try {
+            // sending the clicked post id 
+            // for backend
+            await axios.delete(`http://localhost:5000/api/delete/${clickedPostId}`)
+            setPosts((prevPosts) => prevPosts.filter((post) => post._id !== clickedPostId));
+
+        } catch (error) {
+            console.log(error.message)
+        }
+      };
+      
+
+    // Fetch the document count the post
     useEffect(() => {
-        fetch('http://localhost:5000/countOfDocuments')
-            .then((res) => res.json())
+        axios.get('http://localhost:5000/countOfDocuments')
+            .then((res) => res.json)
             .then((data) => setPostCount(data))
             .catch((error) => console.log("Error fetching the data:", error.message))
     }, [])  // Added dependency array to prevent unnecessary re-fetching
@@ -39,7 +49,8 @@ const Dashboard = () => {
         axios
             .get("http://localhost:5000/") // Ensure backend is running
             .then((response) => {
-                setPosts(response.data);
+                const {data} = response
+                setPosts(data);
             })
             .catch((error) => {
                 console.error("Error fetching posts:", error);
@@ -48,10 +59,6 @@ const Dashboard = () => {
 
     return (
         <>
-
-            {/* create small card which contain user email */}
-
-
             {/* Dashboard layout */}
             <div className="absolute  flex flex-col items-center justify-center w-full h-full bg-gradient-to-br from-gray-100 to-gray-300 p-6">
                 <div className="w-full min-h-screen flex flex-col items-center justify-start pt-10 bg-gradient-to-br from-gray-100 to-gray-300">
@@ -84,9 +91,9 @@ const Dashboard = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {posts.length > 0 ? (
                                         posts.slice().reverse().map((post, index) => (
-                                            <div key={index} className="relative bg-gray-100 p-3 rounded-lg shadow-md border">
+                                            <div key={post._id}className="relative bg-gray-100 p-3 rounded-lg shadow-md border">
                                                 <button
-                                                    onClick={() => handleDelete(index)}
+                                                    onClick={() => handleDelete(post._id)}
                                                     className="absolute top-2 right-2 text-red-500 hover:text-red-700"
                                                 >
                                                     <X size={18} />

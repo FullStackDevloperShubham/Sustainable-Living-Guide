@@ -8,7 +8,7 @@ import {handleGet} from '../controllers/post.controller.js';
 import {handlePostData} from '../controllers/post.controller.js';
 import { getDataById } from '../controllers/post.controller.js';
 import {totalNumberOfDocumentsInDatabase} from '../controllers/post.controller.js'
-
+import {deletePostById} from '../controllers/post.controller.js'
 // get router
 router.get('/',handleGet)
 
@@ -20,5 +20,8 @@ router.post('/post',handlePostData )
 
 // total documents in mongodb 
 router.get('/countOfDocuments',totalNumberOfDocumentsInDatabase)
+
+// delete post by id
+router.delete('/api/delete/:id', deletePostById)
 
 export default router;
