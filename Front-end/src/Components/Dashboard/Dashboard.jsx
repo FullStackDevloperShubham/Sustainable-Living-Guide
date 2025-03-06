@@ -25,51 +25,47 @@ const Dashboard = () => {
 
             {/* create small card which contain user email */}
 
-            <div className="absolute right-0 p-4 text-white rounded-lg shadow-md w-64 ">
+            <div className="absolute  right-0 p-4 text-white rounded-lg shadow-md w-64 ">
                 <p className="text-lg font-semibold truncate">{user.email}</p>
             </div>
 
             {/* Dashboard layout */}
-            <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
-                <div className="flex flex-col items-center justify-center w-3/4 h-3/4 bg-white shadow-lg rounded-lg">
-                    <div className="flex flex-row w-full h-full">
+            <div className="absolute  flex flex-col items-center justify-center w-full h-full bg-gradient-to-br from-gray-100 to-gray-300 p-6">
+                <div className="w-full min-h-screen flex flex-col items-center justify-start pt-10 bg-gradient-to-br from-gray-100 to-gray-300">
+                    <h1 className="text-3xl font-semibold text-gray-800">Welcome to the Dashboard</h1>
+                    <p className="text-lg text-gray-600">Manage your activities, track progress, and stay updated.</p>
 
-                        {/* Sidebar */}
-                        <div className="flex flex-col w-1/4 h-full bg-gray-300 border border-gray-400">
-                            <div className="flex flex-col items-center justify-center w-full h-1/6">
-                                <h1 className="text-black text-xl font-semibold">{user.name} <br /> Time :{user.updated_at}</h1>
-                            </div>
-                            <div className="flex flex-col gap-5 items-center pt-4 w-full h-5/6 bg-gray-300 border">
-                                <Link to='/LearnMore'>
-                                    <Button className="bg-gray-300 text-black hover:bg-gray-400 hover:text-white">Home</Button>
-                                </Link>
-                                <Link to='/createpost'>
-                                    <Button className="bg-gray-300 text-black hover:bg-gray-400 hover:text-white">Create Post</Button>
-                                </Link>
-                            </div>
+                    <div className="mt-6 flex gap-6">
+                        {/* Example Stats Cards */}
+                        <div className="bg-white shadow-md p-4 rounded-xl text-center w-40">
+                            <h2 className="text-xl font-bold text-gray-800">Sustainable Living Guide</h2>
                         </div>
-
-                        {/* Main Content */}
-                        <div className="flex flex-col w-3/4 h-full bg-gray-200 border border-gray-400">
-
-                            {/* Header */}
-                            <div className="flex flex-col items-center justify-center w-full h-1/6 bg-gray-300 relative">
-                                <h1 className="text-xl font-semibold">User ID :{user.sub}</h1>
-
-                                {/* Total Posts Count - Positioned at the Top */}
-                                <div className="absolute top-35 bg-white/30 backdrop-blur-md shadow-lg rounded-2xl px-6 py-2">
-                                    <h2 className="text-xl font-semibold text-gray-800">Total Posts: <span className="font-bold text-blue-600">{postCount}</span></h2>
-                                </div>
-                            </div>
-
-                            {/* Content Section */}
-                            <div className="flex flex-col items-center justify-center w-full h-5/6 bg-gradient-to-br from-gray-100 to-gray-300">
-                                <h1 className="text-2xl text-gray-700">Welcome to the Dashboard</h1>
-                            </div>
+                        <div className="bg-white shadow-md p-4 rounded-xl text-center w-40">
+                            <h2 className="text-xl font-bold text-gray-800">Tasks</h2>
+                            <p className="text-2xl font-semibold text-green-600">{postCount}</p>
                         </div>
                     </div>
+
+                    <div className="mt-6 flex gap-4">
+                        {/* Example Action Buttons */}
+                        <button className="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">
+                            View Reports
+                        </button>
+                        <button className="px-6 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition">
+                            <Link to='/LearnMore'>
+                                Main Page
+                            </Link>
+                        </button>
+                        <button className="px-6 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition">
+                            <Link to='/createpost'>
+                                Create Post
+                            </Link>
+                        </button>
+                    </div>
                 </div>
+
             </div>
+
         </>
     );
 }
