@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { X , Pencil } from "lucide-react";
 import axios from 'axios';
 
 const Dashboard = () => {
@@ -21,7 +21,7 @@ const Dashboard = () => {
     const [isVisible, setIsVisible] = useState(true)
 
     // delete the post 
-    const handleDelete = async(clickedPostId) => {
+    const handleDelete = async (clickedPostId) => {
         console.log("Delete post at index:", clickedPostId);
 
         try {
@@ -33,8 +33,8 @@ const Dashboard = () => {
         } catch (error) {
             console.log(error.message)
         }
-      };
-      
+    };
+
 
     // Fetch the document count the post
     useEffect(() => {
@@ -49,7 +49,7 @@ const Dashboard = () => {
         axios
             .get("http://localhost:5000/") // Ensure backend is running
             .then((response) => {
-                const {data} = response
+                const { data } = response
                 setPosts(data);
             })
             .catch((error) => {
@@ -86,12 +86,12 @@ const Dashboard = () => {
 
                         {!isVisible && (
                             <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 w-[90%] md:w-2/3 bg-white shadow-lg rounded-lg p-4 border 
-                  max-h-100 overflow-y-auto">
+        max-h-100 overflow-y-auto">
                                 <h2 className="text-lg font-bold mb-2">Latest Posts</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     {posts.length > 0 ? (
-                                        posts.slice().reverse().map((post, index) => (
-                                            <div key={post._id}className="relative bg-gray-100 p-3 rounded-lg shadow-md border">
+                                        posts.slice().reverse().map((post) => (
+                                            <div key={post._id} className="relative bg-gray-100 p-3 rounded-lg shadow-md border">
                                                 <button
                                                     onClick={() => handleDelete(post._id)}
                                                     className="absolute top-2 right-2 text-red-500 hover:text-red-700"

@@ -31,7 +31,6 @@ export const getDataById = async (req, res) => {
 
 }
 
-
 // store post
 // req.body
 export const handlePostData = (req, res) => {
@@ -66,7 +65,6 @@ export const totalNumberOfDocumentsInDatabase = async(req,res)=>{
     }
 }
 
-
 // Delete post by id 
 export const deletePostById = async(req,res)=>{
 
@@ -87,4 +85,26 @@ export const deletePostById = async(req,res)=>{
         return res.status(404).json({ error: "id dosen't exist" })
     }
 
+}
+
+// update the post
+export const updatePostById = async (req, res) => {
+
+    // get the id from the params
+    const {id} = req.params;
+    // get the data from body
+    const { title, description } = req.body
+
+    // check if the id is valid
+    if (!id ||!description) {
+        return res.status(400).json({ error: 'Please provide the id and description' })
+    }
+
+    try {
+        // update the post by id
+        await Post.findByIdAndUpdate(id, { description  , title}, { new: true })
+        res.status(200).json({ message: 'Post updated successfully' })
+    } catch (error) {
+        return res.status(404).json({ error: "id dosen't exist" })
+    }
 }
