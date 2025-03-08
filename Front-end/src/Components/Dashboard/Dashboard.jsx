@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button";
-import { X , Pencil } from "lucide-react";
+import { X } from "lucide-react";
 import axios from 'axios';
 
 const Dashboard = () => {
@@ -39,7 +39,7 @@ const Dashboard = () => {
     // Fetch the document count the post
     useEffect(() => {
         axios.get('http://localhost:5000/countOfDocuments')
-            .then((res) => res.json)
+            .then((res) => res.data)
             .then((data) => setPostCount(data))
             .catch((error) => console.log("Error fetching the data:", error.message))
     }, [])  // Added dependency array to prevent unnecessary re-fetching

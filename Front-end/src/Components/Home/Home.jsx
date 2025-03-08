@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
 import LogIn from '../LogIn/LogIn';
-import LogOut from '../LogOut/LogOut';
 import Dashboard from '../Dashboard/Dashboard';
+import {useAuth0} from '@auth0/auth0-react';
 const Home = () => {
+
+    // Check if user is authenticated
+    const { user, isAuthenticated, isLoading } = useAuth0();
+
+    if (isLoading) return <p>Loading...</p>;
+
     return (
         <div className="bg-green-50 min-h-screen flex flex-col items-center justify-center text-center px-6">
             {/* Hero Section */}
@@ -21,12 +27,17 @@ const Home = () => {
                 </button>
             </Link>
 
+            {
+                isAuthenticated? (
+                    <Dashboard />
+                ) : (
+                    <LogIn />
+                )
+            }
             
-                {/* LogIn */}
-                <LogIn />
 
-                {/* LogOut */}
-                <LogOut />
+            
+              
 
 
         </div>
